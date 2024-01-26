@@ -1,6 +1,25 @@
 import * as fs from 'fs';
-import * as path from 'path';
 import csvParser from 'csv-parser';
+// import * as path from 'path';
+import { Command } from 'commander';
+
+// Create a new instance of Commander
+const program = new Command();
+
+// Define command-line options
+program
+  .option('-p, --path <path>', 'Path to the spreadsheet file')
+  .parse(process.argv);
+
+// Get the provided file path from command-line arguments
+const options = program.opts();
+const spreadsheetPath = options.path;
+
+
+if (!spreadsheetPath) {
+  console.error('Error: Please provide the path to the spreadsheet file using the -p or --path option.');
+  process.exit(1);
+}
 
 // Function to read and process the spreadsheet
 const processSpreadsheet = (filePath: string) => {
@@ -58,7 +77,5 @@ const processRow = (row: any) => {
   return processedData;
 };
 
-
-const spreadsheetPath = path.join('C:/Users/paara/Downloads/spreadsheet.csv');
-
+// Call the function to process the spreadsheet with the provided file path
 processSpreadsheet(spreadsheetPath);
