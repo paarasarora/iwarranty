@@ -42,7 +42,6 @@ var processRow = function (row) {
         category: row['directory_category'],
         contact: {
             email: row['directory_contact__email'],
-            fax: row['directory_contact__fax'],
             mobile: row['directory_contact__mobile'],
             phone: row['directory_contact__phone'],
             website: row['directory_contact__website'],
@@ -51,9 +50,6 @@ var processRow = function (row) {
             street: row['directory_location__street'],
             city: row['directory_location__city'],
             country: row['directory_location__country'],
-            address: row['directory_location__address'],
-            lat: parseFloat(row['directory_location__lat']),
-            lng: parseFloat(row['directory_location__lng']),
             zip: row['directory_location__zip'],
             state: row['directory_location__state'],
         },
@@ -70,3 +66,4 @@ var processRow = function (row) {
 // Call the function to process the spreadsheet with the provided file path
 processSpreadsheet(spreadsheetPath);
 
+// node app.cjs -p C:/Users/paara/Downloads/spreadsheet.csv
